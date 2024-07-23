@@ -9,6 +9,10 @@ import net.minecraft.world.World;
 public class TileReactorRodMotor extends PFAATileEntityBase {
 
 	public FissionReactorController MasterController = null;
+
+	private FissionReactorController GetMaster() {
+		return null;
+	}
 	
 	public TileReactorRodMotor(World world, int meta) {
 		super(world, meta);
