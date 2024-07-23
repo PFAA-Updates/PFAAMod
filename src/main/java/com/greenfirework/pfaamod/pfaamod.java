@@ -1,4 +1,4 @@
-package com.myname.mymodid;
+package com.greenfirework.pfaamod;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -10,13 +10,16 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 
-@Mod(modid = MyMod.MODID, version = Tags.VERSION, name = "MyMod", acceptedMinecraftVersions = "[1.7.10]")
-public class MyMod {
+@Mod(modid = pfaamod.MODID, version = Tags.VERSION, name = "MyMod", acceptedMinecraftVersions = "[1.7.10]")
+public class pfaamod {
 
-    public static final String MODID = "mymodid";
+    public static final String MODID = "pfaamod";
     public static final Logger LOG = LogManager.getLogger(MODID);
 
-    @SidedProxy(clientSide = "com.myname.mymodid.ClientProxy", serverSide = "com.myname.mymodid.CommonProxy")
+    @Mod.Instance("pfaamod")
+    public static pfaamod instance;
+    
+    @SidedProxy(clientSide = "com.greenfirework.pfaamod.ClientProxy", serverSide = "com.greenfirework.pfaamod.CommonProxy")
     public static CommonProxy proxy;
 
     @Mod.EventHandler

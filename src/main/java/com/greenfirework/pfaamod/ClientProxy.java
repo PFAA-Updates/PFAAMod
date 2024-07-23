@@ -1,4 +1,4 @@
-package com.myname.mymodid;
+package com.greenfirework.pfaamod;
 
 public class ClientProxy extends CommonProxy {
 
