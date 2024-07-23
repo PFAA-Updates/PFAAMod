@@ -8,10 +8,24 @@ import net.minecraft.world.World;
 
 public class TileReactorRodMotor extends PFAATileEntityBase {
 
+	public boolean isMaster = false;
 	public FissionReactorController MasterController = null;
 
-	private FissionReactorController GetMaster() {
-		return null;
+	public FissionReactorController GetMaster() {
+		
+		// If we haven't memoized the master controller, search for it.
+		if (MasterController == null) {		
+			Object te = world.getTileEntity(xCoord - 1, yCoord, zCoord);
+			if (!(te instanceof TileReactorRodMotor)) {
+				te = world.getTileEntity(xCoord, yCoord, zCoord - 1);
+			}
+		
+			if (te instanceof TileReactorRodMotor) {
+				MasterController = ((TileReactorRodMotor)te).GetMaster();
+			}			
+		}
+
+		return MasterController;
 	}
 	
 	public TileReactorRodMotor(World world, int meta) {

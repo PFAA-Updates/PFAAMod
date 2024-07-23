@@ -8,6 +8,8 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
 public abstract class PFAATileEntityBase extends TileEntity {
+	protected World world;
+	
 	@Override
 	public void readFromNBT(NBTTagCompound nbt)
 	{
@@ -44,6 +46,6 @@ public abstract class PFAATileEntityBase extends TileEntity {
 	}
 	
 	public PFAATileEntityBase(World world, int meta) {
-		
+		this.world = world;
 	}
 }
