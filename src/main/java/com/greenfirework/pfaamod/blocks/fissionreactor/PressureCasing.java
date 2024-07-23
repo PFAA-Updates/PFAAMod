@@ -1,30 +1,12 @@
 package com.greenfirework.pfaamod.blocks.fissionreactor;
 
-import com.greenfirework.pfaamod.Utility;
-
-import cpw.mods.fml.common.registry.GameRegistry;
-import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.EnumCreatureType;
-import net.minecraft.world.IBlockAccess;
-
-public class PressureCasing extends Block {
+public class PressureCasing extends ReactorBlockBase {
 
 	private static final String name = "pressureCasing";
 	
 	public PressureCasing() {
-		super(Material.iron);
-		setBlockName(name);
-		setBlockTextureName(Utility.TextureName(name));
-		setCreativeTab(CreativeTabs.tabRedstone);
-		
-		GameRegistry.registerBlock(this,  name);
+		super(name);
 	}
 
-    @Override
-    public boolean canCreatureSpawn(EnumCreatureType type, IBlockAccess world, int x, int y, int z) {
-        return false;
-    }
-
+	// TODO this one needs to change textures based on connected blocks...  later.
 }

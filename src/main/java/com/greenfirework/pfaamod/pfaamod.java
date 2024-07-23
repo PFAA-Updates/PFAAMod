@@ -3,6 +3,9 @@ package com.greenfirework.pfaamod;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.greenfirework.pfaamod.blocks.Blocks;
+import com.greenfirework.pfaamod.items.Items;
+
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -10,7 +13,7 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 
-@Mod(modid = pfaamod.MODID, version = Tags.VERSION, name = "MyMod", acceptedMinecraftVersions = "[1.7.10]")
+@Mod(modid = pfaamod.MODID, version = Tags.VERSION, name = "pfaamod", acceptedMinecraftVersions = "[1.7.10]")
 public class pfaamod {
 
     public static final String MODID = "pfaamod";
@@ -27,6 +30,9 @@ public class pfaamod {
     // GameRegistry." (Remove if not needed)
     public void preInit(FMLPreInitializationEvent event) {
         proxy.preInit(event);
+        
+        Blocks.init();
+        Items.init();
     }
 
     @Mod.EventHandler
