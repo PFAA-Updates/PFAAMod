@@ -1,10 +1,12 @@
 package com.greenfirework.pfaamod.blocks.fissionreactor;
 
-public class PressureCasing extends ReactorBlockBase {
+import com.greenfirework.pfaamod.blocks.PFAABlockBase;
+
+public class BlockReactorPressureCasing extends PFAABlockBase {
 
 	private static final String name = "pressureCasing";
 	
-	public PressureCasing() {
+	public BlockReactorPressureCasing() {
 		super(name);
 	}
 

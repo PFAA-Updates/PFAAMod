@@ -1,13 +1,13 @@
 package com.greenfirework.pfaamod.blocks;
-import com.greenfirework.pfaamod.blocks.fissionreactor.PressureCasing;
+import com.greenfirework.pfaamod.blocks.fissionreactor.BlockReactorPressureCasing;
 
 public class Blocks {
 	
-	public static PressureCasing PressureCasing;
+	public static BlockReactorPressureCasing PressureCasing;
 	
 	
 	public static void init() {
-		PressureCasing = new PressureCasing();
+		PressureCasing = new BlockReactorPressureCasing();
 		
 	}
 }
