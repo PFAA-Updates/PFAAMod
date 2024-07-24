@@ -48,4 +48,8 @@ public abstract class PFAATileEntityBase extends TileEntity {
 	public PFAATileEntityBase(World world, int meta) {
 		this.world = world;
 	}
+	
+	public PFAATileEntityBase() {
+		this.world = null;
+	}
 }

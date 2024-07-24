@@ -1,16 +1,18 @@
 package com.greenfirework.pfaamod.blocks.fissionreactor;
 
-import com.greenfirework.pfaamod.blocks.PFAABlockTEProviderBase;
+import com.greenfirework.pfaamod.blocks.PFAABlockTESRProviderBase;
+import com.greenfirework.pfaamod.blocks.fissionreactor.tileEntities.TESRReactorChannelAssembly;
 import com.greenfirework.pfaamod.blocks.fissionreactor.tileEntities.TileReactorChannelAssembly;
 
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockReactorChannelAssembly extends PFAABlockTEProviderBase<TileReactorChannelAssembly> {
+public class BlockReactorChannelAssembly extends PFAABlockTESRProviderBase<TileReactorChannelAssembly, TESRReactorChannelAssembly> {
 
 	private static final String name = "channelAssembly";
 
-	protected BlockReactorChannelAssembly() {
-		super(name);	
+	public BlockReactorChannelAssembly() {
+		super(name, TileReactorChannelAssembly.class, TESRReactorChannelAssembly.class);	
 	}
 
 	@Override

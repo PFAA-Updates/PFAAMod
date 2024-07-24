@@ -7,10 +7,10 @@ import net.minecraft.world.World;
 
 public class BlockReactorRodMotor extends PFAABlockTEProviderBase<TileReactorRodMotor> {
 
-	private static final String name = "reactorFluidPort";
+	private static final String name = "reactorRodMotor";
 	
 	public BlockReactorRodMotor() {
-		super(name);
+		super(name, TileReactorRodMotor.class);
 	}
 
 	@Override

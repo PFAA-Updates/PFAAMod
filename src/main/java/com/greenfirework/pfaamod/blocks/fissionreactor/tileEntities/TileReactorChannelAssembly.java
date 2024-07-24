@@ -14,21 +14,26 @@ public class TileReactorChannelAssembly extends PFAATileEntityBase {
 		super(world, meta);
 	}
 
+	public TileReactorChannelAssembly() {
+		super();
+	}
+	
+	
 	private static ChannelTypes Conv[] = { ChannelTypes.Empty, ChannelTypes.CoolingChannel, ChannelTypes.FuelChannel, ChannelTypes.ReflectorChannel};
 	
 	@Override
 	public void readCustomNBT(NBTTagCompound nbt) {
 		
-		int[] chan = nbt.getIntArray("channels");
-		for (int i=0;i<4;i++)
-			Channels[i] = Conv[chan[i]];
+		//int[] chan = nbt.getIntArray("channels");
+		//for (int i=0;i<4;i++)
+			//Channels[i] = Conv[chan[i]];
 		
 		
 	}
 
 	@Override
 	public void writeCustomNBT(NBTTagCompound nbt) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
