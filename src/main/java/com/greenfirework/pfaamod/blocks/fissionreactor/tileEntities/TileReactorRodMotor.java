@@ -13,7 +13,7 @@ public class TileReactorRodMotor extends PFAATileEntityBase {
 
 	public FissionReactorController GetMaster() {
 		
-		// If we haven't memoized the master controller, search for it.
+		// If we haven't memoized the master controller, search for it, memoize the result..
 		if (MasterController == null) {		
 			Object te = world.getTileEntity(xCoord - 1, yCoord, zCoord);
 			if (!(te instanceof TileReactorRodMotor)) {
