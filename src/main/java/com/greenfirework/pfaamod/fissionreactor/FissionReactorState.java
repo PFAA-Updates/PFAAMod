@@ -4,7 +4,5 @@ public class FissionReactorState {
 	public int SizeX;
 	public int SizeZ;
 	
-	public ChannelTypes[] ChannelSetup;
-	
 	
 }
