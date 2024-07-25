@@ -13,13 +13,13 @@ public class TileReactorFluidPort extends PFAATileEntityBase {
 	}
 
 	@Override
-	public void readCustomNBT(NBTTagCompound nbt) {
+	public void readCustomNBT(NBTTagCompound nbt, boolean isDescription) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void writeCustomNBT(NBTTagCompound nbt) {
+	public void writeCustomNBT(NBTTagCompound nbt, boolean isDescription) {
 		// TODO Auto-generated method stub
 		
 	}

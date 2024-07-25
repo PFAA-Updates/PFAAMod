@@ -1,17 +1,30 @@
 package com.greenfirework.pfaamod.components;
 
+import java.util.Random;
+
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import net.minecraft.world.World;
 
 public class InventoryComponent {
+    private final static Random rand = new Random();
 
     private ItemStack[] itemStacks;
     
     public InventoryComponent(int capacitySlots) {
-    	itemStacks = new ItemStack[capacitySlots];
+    	itemStacks = new ItemStack[Math.max(1, capacitySlots)];
     }
 
+    public void setSizeInventory(int capacitySlots) {
+    	ItemStack[] tempItems = new ItemStack[Math.max(1, capacitySlots)];
+    	for (int idx = 0; idx < Math.min(capacitySlots, itemStacks.length); idx++) {
+    		tempItems[idx] = itemStacks[idx];
+    	}
+    	itemStacks = tempItems;
+    }    
+    
 	public int getSizeInventory() {
 		return itemStacks.length;
 	}
@@ -75,13 +88,13 @@ public class InventoryComponent {
 		return 64;
 	}
 
-    public void readFromNBT(NBTTagCompound compound) {
-    	readFromNBT(compound, "Items");
+    public void readFromNBT(NBTTagCompound nbt) {
+    	readFromNBT(nbt, "Items");
 	}
 	
-	public void readFromNBT(NBTTagCompound compound, String ItemKey) {
-		NBTTagList nbttaglist = compound.getTagList(ItemKey, 10);
-        this.itemStacks = new ItemStack[this.getSizeInventory()];
+	public void readFromNBT(NBTTagCompound nbt, String itemKey) {
+		NBTTagList nbttaglist = nbt.getTagList(itemKey, 10);
+        this.itemStacks = new ItemStack[nbt.getInteger(itemKey+"Count")];
 
         for (int i = 0; i < nbttaglist.tagCount(); ++i)
         {
@@ -95,11 +108,11 @@ public class InventoryComponent {
         }
 	}
 	
-    public void writeToNBT(NBTTagCompound compound) {
-    	writeToNBT(compound, "Items");
+    public void writeToNBT(NBTTagCompound nbt) {
+    	writeToNBT(nbt, "Items");
 	}
 
-    public void writeToNBT(NBTTagCompound compound, String ItemKey) {
+    public void writeToNBT(NBTTagCompound nbt, String itemKey) {
         NBTTagList nbttaglist = new NBTTagList();
         for (int i = 0; i < this.itemStacks.length; ++i)
         {
@@ -111,7 +124,23 @@ public class InventoryComponent {
                 nbttaglist.appendTag(nbttagcompound1);
             }
         }
-        compound.setTag(ItemKey, nbttaglist);
+        nbt.setTag(itemKey, nbttaglist);
+        nbt.setInteger(itemKey+"Count", itemStacks.length);
 	}
 	
+    public void ejectWorld(World world, int x, int y, int z) {
+    	if (world.isRemote)
+    		return; // No, not on clients thanks.
+    	
+    	for (int i = 0; i < getSizeInventory(); i++)
+        {
+            ItemStack stack = itemStacks[i];
+
+            if (stack != null) {
+            	EntityItem item = new EntityItem(world, x + 0.5, y + 0.5, z + 0.5, stack);
+            	item.setVelocity((rand.nextDouble() - 0.5) * 0.25, rand.nextDouble() * 0.5 * 0.25, (rand.nextDouble() - 0.5) * 0.25);
+            	world.spawnEntityInWorld(item);
+            }
+        }
+    }
 }

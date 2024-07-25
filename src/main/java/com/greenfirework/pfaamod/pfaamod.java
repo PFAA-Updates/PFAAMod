@@ -12,6 +12,11 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
+import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 
 @Mod(modid = pfaamod.MODID, version = Tags.VERSION, name = "pfaamod", acceptedMinecraftVersions = "[1.7.10]")
 public class pfaamod {
@@ -25,6 +30,8 @@ public class pfaamod {
     @SidedProxy(clientSide = "com.greenfirework.pfaamod.ClientProxy", serverSide = "com.greenfirework.pfaamod.CommonProxy")
     public static CommonProxy proxy;
 
+    public static final SimpleNetworkWrapper networkMessages = NetworkRegistry.INSTANCE.newSimpleChannel(MODID);
+    
     @Mod.EventHandler
     // preInit "Run before anything else. Read your config, create blocks, items, etc, and register them with the
     // GameRegistry." (Remove if not needed)
@@ -52,4 +59,18 @@ public class pfaamod {
     public void serverStarting(FMLServerStartingEvent event) {
         proxy.serverStarting(event);
     }
+    
+    public static CreativeTabs creativeTab = new CreativeTabs(MODID)
+	{
+		@Override
+		public Item getTabIconItem()
+		{
+			return null;
+		}
+		@Override
+		public ItemStack getIconItemStack()
+		{
+			return new ItemStack(Blocks.ChannelAssembly,1,1);
+		}
+	};
 }

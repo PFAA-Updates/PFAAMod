@@ -4,7 +4,6 @@ import com.greenfirework.pfaamod.blocks.PFAABlockTESRProviderBase;
 import com.greenfirework.pfaamod.blocks.fissionreactor.tileEntities.TESRReactorChannelAssembly;
 import com.greenfirework.pfaamod.blocks.fissionreactor.tileEntities.TileReactorChannelAssembly;
 
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class BlockReactorChannelAssembly extends PFAABlockTESRProviderBase<TileReactorChannelAssembly, TESRReactorChannelAssembly> {
