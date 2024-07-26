@@ -21,6 +21,9 @@ public class TileReactorRodMotor extends PFAATileEntityBase implements IAssemble
 	public float rodTargetPosition;
 	
 	public FissionReactor GetMaster() {	
+		if (world.isRemote)
+			return null;
+		
 		if (!isAssembled)
 			return null;
 		
@@ -60,18 +63,23 @@ public class TileReactorRodMotor extends PFAATileEntityBase implements IAssemble
 
 	@Override
 	public void updateEntity() {
-		if (world.isRemote)
-			return;
 		
-		if (isMaster)
-			MasterController.tick();
-		
+		// Do the simulation of the rods actually moving on the client as well as the server
 		if (rodActualPosition > rodTargetPosition) {
 			rodActualPosition -= 0.003125;
 		}
 		if (rodActualPosition < rodTargetPosition) {
 			rodActualPosition += 0.003125;
 		}
+		if (Math.abs(rodActualPosition - rodTargetPosition) < 0.003125)
+			rodActualPosition = rodTargetPosition;
+		
+		if (world.isRemote)
+			return;
+		
+		if (isMaster)
+			MasterController.tick();
+		
 	}
 
 	@Override

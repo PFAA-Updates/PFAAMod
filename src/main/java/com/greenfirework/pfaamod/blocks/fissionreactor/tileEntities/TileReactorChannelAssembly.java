@@ -4,6 +4,7 @@ import com.greenfirework.pfaamod.blocks.PFAATileEntityBase;
 import com.greenfirework.pfaamod.components.InventoryComponent;
 import com.greenfirework.pfaamod.structures.IAssembleable;
 
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
@@ -38,6 +39,13 @@ public class TileReactorChannelAssembly extends PFAATileEntityBase implements IA
 		nbt.setBoolean("isAssembled", isAssembled);		
 	}
 
+	public boolean onBlockActivated(World worldIn, int x, int y, int z, EntityPlayer player, int side, float subX, float subY, float subZ) {
+		
+		if (side != 1)
+			return false;
+		
+		return false;
+	}
 
 	@Override
 	public void assemble() {

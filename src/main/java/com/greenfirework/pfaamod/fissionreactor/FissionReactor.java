@@ -14,7 +14,7 @@ import net.minecraftforge.fluids.FluidTank;
 public class FissionReactor {
 	
 	private World worldInst;
-	private FluidTank Coolant;
+	public FluidTank Coolant;
 
 	private static ReactorEmptyChannel Empty = new ReactorEmptyChannel();
 	
@@ -42,6 +42,11 @@ public class FissionReactor {
 	 * Position of the master rod motor (most northwest)
 	 */
 	public int masterPosition[];
+	
+	/**
+	 * Fluid outlet block position
+	 */
+	public int outletPosition[];
 	
 	/**
 	 * Core offset - how many blocks down the top-north-west-most channel assembly block is.
@@ -193,6 +198,11 @@ public class FissionReactor {
 	 */
 	private void smallTick() {
 		
+		// Heat up the channel assemblies
+		for (int idx=0; idx<assemblyDimensions[0]*assemblyDimensions[1]*assemblyDimensions[2]; idx++) {
+			assemblyTemperatures[idx] += assemblyHeatGenerate[idx];
+			
+		}
 	}
 	
 	/**
