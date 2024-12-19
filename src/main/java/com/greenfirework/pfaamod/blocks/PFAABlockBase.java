@@ -17,7 +17,7 @@ public abstract class PFAABlockBase extends Block {
 	public PFAABlockBase(String name) {
 		super(Material.iron);
 		setBlockName(name);
-		setBlockTextureName(Utility.TextureName(name));
+		setBlockTextureName(Utility.textureName(name));
 		setCreativeTab(CreativeTabs.tabRedstone);
 		
 		GameRegistry.registerBlock(this,  name);

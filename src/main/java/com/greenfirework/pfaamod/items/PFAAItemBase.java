@@ -9,7 +9,7 @@ import net.minecraft.item.Item;
 public class PFAAItemBase extends Item {
 	public PFAAItemBase(String name) {
 		setUnlocalizedName(name);
-		setTextureName(Utility.TextureName(name));
+		setTextureName(Utility.textureName(name));
 		setCreativeTab(CreativeTabs.tabRedstone);
 		
 		GameRegistry.registerItem(this, name);

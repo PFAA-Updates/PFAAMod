@@ -1,16 +1,19 @@
 package com.greenfirework.pfaamod.blocks;
 import com.greenfirework.pfaamod.blocks.fissionreactor.BlockReactorChannelAssembly;
 import com.greenfirework.pfaamod.blocks.fissionreactor.BlockReactorPressureCasing;
+import com.greenfirework.pfaamod.blocks.fissionreactor.BlockReactorRodMotor;
 
 public class Blocks {
 
-	public static BlockReactorPressureCasing PressureCasing;
-	public static BlockReactorChannelAssembly ChannelAssembly;
+	public static BlockReactorPressureCasing PRESSURE_CASING;
+	public static BlockReactorChannelAssembly CHANNEL_ASSEMBLY;
+	public static BlockReactorRodMotor ROD_MOTOR;
 	
 	
 	public static void init() {
-		PressureCasing = new BlockReactorPressureCasing();
-		ChannelAssembly = new BlockReactorChannelAssembly();
+		PRESSURE_CASING = new BlockReactorPressureCasing();
+		CHANNEL_ASSEMBLY = new BlockReactorChannelAssembly();
+		ROD_MOTOR = new BlockReactorRodMotor();
 		
 	}
 }

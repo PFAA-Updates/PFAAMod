@@ -141,6 +141,8 @@ public class InventoryComponent {
             	item.setVelocity((rand.nextDouble() - 0.5) * 0.25, rand.nextDouble() * 0.5 * 0.25, (rand.nextDouble() - 0.5) * 0.25);
             	world.spawnEntityInWorld(item);
             }
+            
+            itemStacks[i] = null;
         }
     }
 }

@@ -39,7 +39,7 @@ public class pfaamod {
         proxy.preInit(event);
         
         Blocks.init();
-        Items.init();
+        Items.preInit();
     }
 
     @Mod.EventHandler
@@ -70,7 +70,7 @@ public class pfaamod {
 		@Override
 		public ItemStack getIconItemStack()
 		{
-			return new ItemStack(Blocks.ChannelAssembly,1,1);
+			return new ItemStack(Blocks.CHANNEL_ASSEMBLY,1,1);
 		}
 	};
 }
